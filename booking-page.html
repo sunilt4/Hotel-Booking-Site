@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>The Royal Inn</title>
+  <link rel="shortcut icon" href="images/dp.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+  <script src="main.js"></script>
+  <!-- This is the Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+    crossorigin="anonymous">
+  <!-- Custom styles for this template -->
+  <!-- <link href="booking.css" rel="stylesheet"> -->
+  <script>
+    var placeSearch, autocomplete;
+    function initAutocomplete() {
+      // Create the autocomplete object, restricting the search to geographical
+      // location types.
+      autocomplete = new google.maps.places.Autocomplete(
+                /** @type {!HTMLInputElement} */(document.getElementById('autocomplete')),
+        { types: ['geocode'] });
+
+      // When the user selects an address from the dropdown, populate the address
+      // fields in the form.
+      autocomplete.addListener('place_changed');
+    }
+  </script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDd0CbC8y3X0IHcKfARCK7nbEd1jRpipfM&libraries=places&callback=initAutocomplete"
+    async defer></script>
+</head>
+
+<body>
+  <header>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+      <a class="navbar-brand" href="home-page.html"><img src="images/logo.jpg" width="30" height="30" class="d-inline-block align-top"
+          alt=""> The Royal Inn</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="home-page.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="about-us-page.html">About Us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="room-page.html">Rooms</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="booking-page.html">Book Now<span class="sr-only">(current)</span></a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+  <div class="container-fluid">
+    <div class="row align-items-center text-center white">
+      <div class="col-12 thumbnail">
+        <img src="images/beach.jpg" class="mr-4" width="100%">
+        <div class="caption-top">
+          <h1>Book your Hotel today!</h1>
+          <div class="row justify-content-center">
+            <div class="col-md-11 pl-3 pt-3">
+              <p class="bigger">Bringing people together is what we have done since opening our first Hotel Royal Inn
+                in
+                2012. Now we are
+                deeply rooted in over 400 communities across the globe. We are proud to act as a point of
+                connection for
+                millions of travelers, many just like you. As the most recognized name in the industry, travelers
+                all over the
+                world have been saying take me to The Royal Inn for almost a century. Due to our
+                innovative approach to
+                products, amenities and services, The Royal Inn continues to be synonymous with hotels across the
+                globe. Hotel
+                Royal Inn & Resort remains the stylish, forward thinking global leader of hospitality and we
+                help make
+                traveling easier with our smart design, innovative restaurant concepts, authentic hospitality
+                and commitment to
+                the global community.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="caption-bottom">
+          <div class="row">
+            <div class="col-md-12">
+              <h2>10% off your next stay! USE CODE: ROYAL INN</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container text-center pt-3">
+    <div class="row pt-3">
+      <div class="col-md-12">
+        <h3>
+          Check for Available Dates
+        </h3>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 order-md-1">
+        <form name="form1" class="needs-validation" novalidate>
+          <div class="row">
+            <div class="col-md-4 mb-3">
+              <label for="checkInDate">Check in Date</label>
+              <input type="date" class="form-control" data-type="checkInDate" id="checkInDate" placeholder="(YYYY-MM-DD)"
+                value="" required>
+              <div class="invalid-feedback">
+                Valid check in date is required.
+              </div>
+            </div>
+            <div class="col-md-4 mb-3">
+              <label for="checkOutDate">Checkout Date</label>
+              <input type="date" class="form-control" data-type="checkOutDate" id="checkOutDate" placeholder="(YYYY-MM-DD)"
+                value="" required>
+              <div class="invalid-feedback">
+                Valid checkout date is required.
+              </div>
+            </div>
+            <div class="col-md-4 mb-3">
+              <label for="room-selection">Room Selection</label>
+              <select class="form-control" id="room-selection" required>
+                <option data-type="single-queen" value="50">Single Queen ($150)</option>
+                <option data-type="double-queen" value="100">Double Queen ($200)</option>
+                <option data-type="single-king" value="300">Single King ($500)</option>
+                <option data-type="suite" value="300">Two Bedroom Suite ($800)</option>
+                <option data-type="Villa" value="500">Villa ($1500)</option>
+              </select>
+              <div class="invalid-feedback">
+                Room Selection is required.
+              </div>
+            </div>
+          </div>
+          <button type="submit" onclick="checkIn()" data-toggle="modal" class="btn btn-primary btn-lg btn-block">Check Now</button>
+        </form>
+      </div>
+    </div>
+        <!-- Modal -->
+        <div class="modal fade" id="mainModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+          aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body" id="modal-body">
+                
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+  </div>
+        <!-- FOOTER -->
+        <footer class="container pt-2">
+            <p class="float-right"><a href="#">Back to top</a></p>
+            <p>&copy; 2018 Royal Inn Corporation, Inc. </p>
+        </footer>
+
+        <!-- Bootstrap core JavaScript
+    ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+          crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+          crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+          crossorigin="anonymous"></script>
+        <script>
+          // Example starter JavaScript for disabling form submissions if there are invalid fields
+          (function () {
+            'use strict';
+
+            window.addEventListener('load', function () {
+              // Fetch all the forms we want to apply custom Bootstrap validation styles to
+              var forms = document.getElementsByClassName('needs-validation');
+
+              // Loop over them and prevent submission
+              var validation = Array.prototype.filter.call(forms, function (form) {
+                form.addEventListener('submit', function (event) {
+                  if (form.checkValidity() === false) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                  }
+                  form.classList.add('was-validated');
+                }, false);
+              });
+            }, false);
+          })();
+        </script>
+</body>
+
+</html>
